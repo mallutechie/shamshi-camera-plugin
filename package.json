@@ -1,0 +1,27 @@
+{
+  "name": "shamshi-camera-plugin",
+  "version": "1.0.0",
+  "description": "Camera plugin by shamshi",
+  "cordova": {
+    "id": "shamshi-camera-plugin",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mallutechie/shamshi-camera-plugin.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "shamshi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mallutechie/shamshi-camera-plugin/issues"
+  },
+  "homepage": "https://github.com/mallutechie/shamshi-camera-plugin#readme"
+}
