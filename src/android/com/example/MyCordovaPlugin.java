@@ -34,6 +34,9 @@ public class MyCordovaPlugin extends CordovaPlugin {
       // An example of returning data back to the web layer
       final PluginResult result = new PluginResult(PluginResult.Status.OK, (new Date()).toString());
       callbackContext.sendPluginResult(result);
+    } else if(action.equals("openCamera")){
+      final PluginResult result = new PluginResult(PluginResult.Status.OK, "Well done shamsheer");
+      callbackContext.sendPluginResult(result);
     }
     return true;
   }
