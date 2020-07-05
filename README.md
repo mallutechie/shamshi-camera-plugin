@@ -1,0 +1,1 @@
+# shamshi-camera-plugin
