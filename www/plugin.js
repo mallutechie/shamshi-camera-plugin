@@ -10,7 +10,7 @@ var MyCordovaPlugin = {
   getDate: function(cb) {
     exec(cb, null, PLUGIN_NAME, 'getDate', []);
   },
-  openCamera:function(){
+  openCamera:function(cb){
     exec(cb, null, PLUGIN_NAME, 'openCamera', []);
   }
 };
