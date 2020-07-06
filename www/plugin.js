@@ -11,6 +11,7 @@ var MyCordovaPlugin = {
     exec(cb, null, PLUGIN_NAME, 'getDate', []);
   },
   openCamera:function(cb){
+    console.log('Starting camera......')
     exec(cb, null, PLUGIN_NAME, 'openCamera', []);
   }
 };
