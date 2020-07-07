@@ -27,26 +27,7 @@
         <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         </config-file>
-        <config-file target="AndroidManifest.xml" parent="application">
-          <provider
-              android:name="org.apache.cordova.camera.FileProvider"
-              android:authorities="${applicationId}.provider"
-              android:exported="false"
-              android:grantUriPermissions="true" >
-              <meta-data
-                  android:name="android.support.FILE_PROVIDER_PATHS"
-                  android:resource="@xml/camera_provider_paths"/>
-          </provider>
-        </config-file>
-
       <source-file src="src/android/com/example/MyCordovaPlugin.java" target-dir="src/com/example/" />
-      <source-file src="src/android/com/example/CordovaUri.java" target-dir="src/com/example/" />
-      <source-file src="src/android/com/example/ExifHelper.java" target-dir="src/com/example/" />
-      <source-file src="src/android/com/example/FileHelper.java" target-dir="src/com/example/" />
-      <source-file src="src/android/com/example/FileProvider.java" target-dir="src/com/example/" />
-      <source-file src="src/android/xml/camera_provider_paths.xml" target-dir="res/xml" />
-      <preference name="ANDROID_SUPPORT_V4_VERSION" default="27.+"/>
-      <framework src="com.android.support:support-v4:$ANDROID_SUPPORT_V4_VERSION"/>
     </platform>
 
     <!-- ios -->
