@@ -14,6 +14,15 @@ import android.provider.MediaStore;
 import android.util.Log;
 import org.apache.cordova.CordovaPlugin;
 import java.util.Date;
+import java.io.File;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import java.lang.reflect.InvocationTargetException;
+import org.apache.cordova.PluginManager;
+import java.lang.reflect.Method;
+import java.lang.reflect.Field;
+import org.apache.cordova.file.FileUtils;
+import org.apache.cordova.file.LocalFilesystemURL;
 
 public class MyCordovaPlugin extends CordovaPlugin {
   private static final String TAG = "MyCordovaPlugin";
@@ -26,8 +35,9 @@ public class MyCordovaPlugin extends CordovaPlugin {
 
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     if(action.equals("openCamera")) {
-      Intent camera_intent= new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-      this.cordova.startActivityForResult((CordovaPlugin) this, camera_intent, 2 * 16 + 1 + 1);
+      Intent intent= new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+      intent.putExtra("android.intent.extra.durationLimit",10);
+      this.cordova.startActivityForResult((CordovaPlugin) this, intent, 2 * 16 + 1 + 1);
       PluginResult pluginResult = new PluginResult(PluginResult.Status.NO_RESULT);
       pluginResult.setKeepCallback(true);
       this.callback = callbackContext;
@@ -40,6 +50,26 @@ public class MyCordovaPlugin extends CordovaPlugin {
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) 
   {
+    /*File fp = webView.getResourceApi().mapUriToFile(data.getData());
+    PluginManager pm = null;
+    Class webViewClass = webView.getClass();
+    try {
+        Method gpm = webViewClass.getMethod("getPluginManager");
+        pm = (PluginManager) gpm.invoke(webView);
+    } catch (NoSuchMethodException e) {
+    } catch (IllegalAccessException e) {
+    } catch (InvocationTargetException e) {
+    }
+    if (pm == null) {
+      try {
+          Field pmf = webViewClass.getField("pluginManager");
+          pm = (PluginManager)pmf.get(webView);
+      } catch (NoSuchFieldException e) {
+      } catch (IllegalAccessException e) {
+      }
+    }
+    FileUtils filePlugin = (FileUtils) pm.getPlugin("File");
+    LocalFilesystemURL url = filePlugin.filesystemURLforLocalPath(fp.getAbsolutePath());*/
     PluginResult result = new PluginResult(PluginResult.Status.OK, data.getData().toString());
     result.setKeepCallback(true);
     callback.sendPluginResult(result);
