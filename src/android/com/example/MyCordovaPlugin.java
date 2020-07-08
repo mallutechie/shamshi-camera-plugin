@@ -35,15 +35,16 @@ public class MyCordovaPlugin extends CordovaPlugin {
 
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     if(action.equals("openCamera")) {
+      CordovaPlugin plugin=this;
       this.cordova.getThreadPool().execute(new Runnable() {
         @Override
         public void run() {
           Intent intent= new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
           intent.putExtra("android.intent.extra.durationLimit",10);
-          this.cordova.startActivityForResult((CordovaPlugin) this, intent, 2 * 16 + 1 + 1);
+          cordova.startActivityForResult(plugin, intent, 2 * 16 + 1 + 1);
           PluginResult pluginResult = new PluginResult(PluginResult.Status.NO_RESULT);
           pluginResult.setKeepCallback(true);
-          this.callback = callbackContext;
+          callback = callbackContext;
           callbackContext.sendPluginResult(pluginResult);
         }
       });
